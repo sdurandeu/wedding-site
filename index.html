@@ -1,27 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Carole et Sebastian</title>
-   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Elegant serif + matching italic from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --bg: #fef9f5;
+      --text: #333;
+      --serif: 'Cormorant Garamond', serif;
+      --letterspace: 0.18em;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      background-color: #fef9f5;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      color: var(--text);
+      font-family: var(--serif);
+    }
+
+    /* Top illustration (keeps your existing JPEG/PNG) */
+    .hero {
+      max-width: 520px;
+      width: 90%;
+      height: auto;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Headings */
+    h1, h2 { text-align: center; margin: 0.6rem 0; }
+    h1 {
+      font-weight: 500;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      letter-spacing: var(--letterspace);
+      text-transform: uppercase;
+    }
+    h2 {
+      font-weight: 500;
+      font-size: clamp(1.2rem, 3.3vw, 1.7rem);
+      letter-spacing: 0.12em;
+    }
+
+    /* Intro & body copy */
+    p { margin: 0.4rem 0; font-size: clamp(0.9rem, 2.4vw, 1.05rem); }
+    .italic  { font-style: italic; text-align: center; }
+
+    /* Schedule two‑column block */
+    .schedule {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: stretch;
+      gap: 2rem;
+      margin: 1.4rem 0;
+      flex-wrap: wrap;
+      text-align: center;
     }
-    img {
-      max-width: 90%;
-      max-height: 90%;
-      height: auto;
+    .schedule div { min-width: 9rem; }
+    .schedule .divider {
+      width: 1px; background: var(--text); opacity: 0.3;
+    }
+
+    /* Venue */
+    .venue {
+      text-align: center;
+      margin-top: 1.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .address {
+      font-size: 0.9rem;
+      letter-spacing: normal;
+      text-transform: none;
+      font-style: italic;
     }
   </style>
 </head>
+
 <body>
-  <img src="photo.jpg" alt="Carole et Sebastian">
+  <!-- Your floral illustration -->
+  <img class="hero" src="photo.jpg" alt="Illustration florale">
+
+  <!-- Main names -->
+  <h1>CAROLE &nbsp;&amp;&nbsp; SEBASTIAN</h1>
+
+  <!-- Introductory lines -->
+  <p class="italic">
+    vous convie&nbsp;nt à leur mariage<br />
+    qui sera célébré le samedi
+  </p>
+
+  <!-- Date -->
+  <h2>14&nbsp;MARS&nbsp;2026</h2>
+
+  <!-- Ceremony & Cocktail schedule -->
+  <div class="schedule">
+    <div>
+      rdv pour la<br />
+      <span class="italic">Cérémonie d'union</span><br />
+      – à 16 heures –
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      puis le<br />
+      <span class="italic">Cocktail</span><br />
+      – à 17 heures –
+    </div>
+  </div>
+
+  <!-- Dinner note -->
+  <p class="italic">
+    Nous partagerons ensuite un dîner qui se poursuivra en<br />
+    musique sur la piste de danse.
+  </p>
+
+  <!-- Venue -->
+  <p class="venue">
+    DOMAINE DE MAUVINET<br />
+    <span class="address">53170 | Ruillé‑Froid‑Fonds</span>
+  </p>
 </body>
 </html>
