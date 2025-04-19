@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Carole et Sebastian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -32,9 +33,34 @@
       padding: 2rem 1rem;
       color: var(--text);
       font-family: var(--serif);
+      position: relative;           /* allow absolute‑pos switcher */
     }
 
-    /* Top illustration (keeps your existing JPEG/PNG) */
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    /* ───────────────── Lang switcher ───────────────── */
+    .lang‑switch {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .lang‑switch a {
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+
+    .lang‑switch a.active,
+    .lang‑switch a:hover { opacity: 1; }
+
+    /* ───────────────── Illustration ───────────────── */
     .hero {
       max-width: 520px;
       width: 90%;
@@ -56,11 +82,11 @@
       letter-spacing: 0.12em;
     }
 
-    /* Intro & body copy */
+    /* Copy */
     p { margin: 0.4rem 0; font-size: clamp(0.9rem, 2.4vw, 1.05rem); }
     .italic  { font-style: italic; text-align: center; }
 
-    /* Schedule two‑column block */
+    /* Schedule block */
     .schedule {
       display: flex;
       justify-content: center;
@@ -70,7 +96,6 @@
       flex-wrap: wrap;
       text-align: center;
     }
-
     .schedule .divider {
       width: 1px; background: var(--text); opacity: 0.3;
     }
@@ -93,45 +118,77 @@
 </head>
 
 <body>
-  <!-- Your floral illustration -->
+  <!-- Language selector -->
+  <nav class="lang‑switch" aria-label="Sélecteur de langue">
+    <a href="?lang=fr" id="btn-fr" aria-label="Français">🇫🇷 FR</a>
+    |
+    <a href="?lang=es" id="btn-es" aria-label="Español (Argentina)">🇦🇷 ES</a>
+  </nav>
+
+  <!-- Illustration -->
   <img class="hero" src="main-picture-4.png" alt="Illustration florale">
 
-  <!-- Introductory lines -->
-  <p class="italic">
-    vous convie&nbsp;nt à leur mariage<br />
-    qui sera célébré le samedi
-  </p>
+  <!-- Intro -->
+  <p id="intro" class="italic"></p>
 
   <!-- Date -->
-  <h2>14&nbsp;MARS&nbsp;2026</h2>
+  <h2 id="date"></h2>
 
-  <!-- Ceremony & Cocktail schedule -->
+  <!-- Schedule -->
   <div class="schedule">
-    <div>
-      rdv pour la<br />
-      <span class="italic">Cérémonie d'union</span><br />
-      – à 16 heures –
-    </div>
-
+    <div id="ceremony"></div>
     <div class="divider"></div>
-
-    <div>
-      puis le<br />
-      <span class="italic">Cocktail</span><br />
-      – à 17 heures –
-    </div>
+    <div id="cocktail"></div>
   </div>
 
   <!-- Dinner note -->
-  <p class="italic">
-    Nous partagerons ensuite un dîner qui se poursuivra en<br />
-    musique sur la piste de danse.
-  </p>
+  <p id="dinner" class="italic"></p>
 
   <!-- Venue -->
   <p class="venue">
-    DOMAINE DE MAUVINET<br />
+    <a href="https://maps.app.goo.gl/nmpjtCCqAWp1VzQ36" target="_blank">DOMAINE DE MAUVINET</a><br />
     <span class="address">53170 | Ruillé‑Froid‑Fonds, Mayenne, France</span>
   </p>
+
+  <script>
+    /* ─────────── Translation dictionary ─────────── */
+    const dict = {
+      fr: {
+        intro: "vous convient à leur mariage<br>qui sera célébré le samedi",
+        date: "14&nbsp;MARS&nbsp;2026",
+        ceremony: "rdv pour la<br><span class=\"italic\">Cérémonie d'union</span><br>– à&nbsp;16&nbsp;heures –",
+        cocktail: "puis le<br><span class=\"italic\">Cocktail</span><br>– à&nbsp;17&nbsp;heures –",
+        dinner: "Nous partagerons ensuite un dîner qui se poursuivra en<br>musique sur la piste de danse."
+      },
+      es: {
+        intro: "les invitan a su boda<br>que se celebrará el sábado",
+        date: "14&nbsp;DE&nbsp;MARZO&nbsp;2026",
+        ceremony: "cita para la<br><span class=\"italic\">Ceremonia de unión</span><br>– a&nbsp;las&nbsp;16&nbsp;horas –",
+        cocktail: "luego el<br><span class=\"italic\">Cóctel</span><br>– a&nbsp;las&nbsp;17&nbsp;horas –",
+        dinner: "Compartiremos luego una cena que continuará con<br>música en la pista de baile."
+      }
+    };
+
+    /* ─────────── Helper: get ?lang= param ─────────── */
+    const getLang = () => {
+      const match = location.search.match(/lang=(fr|es)/i);
+      return match ? match[1].toLowerCase() : 'fr';
+    };
+
+    const lang = getLang();
+
+    /* ─────────── Inject text into page ─────────── */
+    const updateContent = t => {
+      for (const key in t) {
+        const el = document.getElementById(key);
+        if (el) el.innerHTML = t[key];
+      }
+    };
+
+    updateContent(dict[lang]);
+
+    /* ─────────── Highlight active button ─────────── */
+    document.getElementById(`btn-${lang}`).classList.add('active');
+  </script>
 </body>
 </html>
