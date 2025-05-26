@@ -40,7 +40,6 @@
 
     a {
       color: var(--text);
-      text-decoration: none;
       transition: color 0.2s;
     }
 
@@ -138,14 +137,102 @@
       margin: 4rem 0;
     }
 
-    #moreInfo {
-      margin-top: 2rem;
+    .rsvp-container {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      background-color: transparent;
+      border: 1.5px solid var(--text);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .rsvp-button:hover {
+      background-color: var(--text);
+      color: var(--bg);
     }
 
     .footer-photo {
       height: 50px;
       margin: auto;
       display: block;
+    }
+
+    #arrival {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      max-width: 800px;
+    }
+
+    #arrival h2 {
+      font-weight: 500;
+      font-size: clamp(1.2rem, 3.3vw, 1.7rem);
+      letter-spacing: 0.12em;
+      margin-bottom: 2rem;
+    }
+
+    .arrival-option {
+      display: grid;
+      grid-template-columns: 1fr 2.5fr;
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+
+    .arrival-title {
+      font-weight: 500;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin-bottom: 2rem;
+    }
+
+    .arrival-desc {
+      font-size: clamp(0.9rem, 2.3vw, 1.05rem);
+    }
+
+    #faq {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      max-width: 800px;
+    }
+
+    #faq > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    #faq h3 {
+      font-weight: 500;
+      font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+      margin-bottom: 0.4rem;
+    }
+
+    #faq p {
+      font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+      margin-top: 0;
+    }
+
+    @media (max-width: 700px) {
+      #faq div {
+        grid-column: span 2;
+      }
+
+      #faq {
+        padding: 0 1rem;
+      }
+
+      #faq > div {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 
@@ -193,7 +280,37 @@
     <span class="address">53170 | Ruillé‑Froid‑Fonds, Mayenne, France</span>
   </p>
 
-  <p id="moreInfo"></p>
+  <!-- RSVP button -->
+  <div class="rsvp-container">
+    <a href="https://forms.gle/jpzpy36tMpoZSCZZA" target="_blank" class="rsvp-button">
+      RSVP
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2 id="faqTitle" style="text-align: center;"></h2>
+    <div id="faqList">
+      <!-- FAQ items will be injected here -->
+    </div>
+  </section>
+
+  <!-- How to arrive -->
+  <section id="arrival">
+    <h2 id="arrivalTitle" style="text-align: center;"></h2>
+    <div class="arrival-option">
+      <div id="arrival1Title" class="arrival-title"></div>
+      <div id="arrival1Desc" class="arrival-desc"></div>
+    </div>
+    <div class="arrival-option">
+      <div id="arrival2Title" class="arrival-title"></div>
+      <div id="arrival2Desc" class="arrival-desc"></div>
+    </div>
+    <div class="arrival-option">
+      <div id="arrival3Title" class="arrival-title"></div>
+      <div id="arrival3Desc" class="arrival-desc"></div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <img class="photo-of-us" src="photo-of-us-art.png" alt="Photos de Carole et Sebastian"  />
@@ -212,7 +329,64 @@
         ceremony: "rdv pour la<br><span class=\"italic\">Cérémonie d'union</span><br>– à&nbsp;16&nbsp;heures –",
         cocktail: "puis le<br><span class=\"italic\">Cocktail</span><br>– à&nbsp;17&nbsp;heures –",
         dinner: "Nous partagerons ensuite un dîner qui se poursuivra en<br>musique sur la piste de danse.",
-        moreInfo: "Plus d'infos à venir!",
+        arrivalTitle: "Comment arriver ?",
+        arrival1Title: "Option 1 : Depuis Paris",
+        arrival1Desc: "Prenez un TGV depuis Paris Montparnasse jusqu'à Laval (environ 1h40). Depuis la gare de Laval, le domaine est à 25 minutes en taxi.",
+        arrival2Title: "Option 2 : Depuis Rennes",
+        arrival2Desc: "Prenez un TER jusqu'à Laval (45 à 60 min), ou louez une voiture. Le trajet en voiture prend environ 1h30.",
+        arrival3Title: "Option 3 : Depuis Nantes",
+        arrival3Desc: "Trajet direct en voiture (environ 2h). Sinon, vous pouvez aussi prendre un train jusqu’à Laval via Angers ou Le Mans.",
+        faqTitle: "Vous vous demandez peut-être…",
+        faq: [
+          {
+            "q": "Quand a lieu le mariage et ù se déroule?",
+            "a": "Le samedi 14 mars 2026 au Domaine de Mauvinet, à Ruillé-Froid-Fonds (Mayenne). La cérémonie laïque débutera à 16h00. Merci d’arriver à partir de 15h30."
+          },
+          {
+            "q": "Comment se rendre au Domaine de Mauvinet?",
+            "a": "Nous avons listé quelques options de transport dans la <a href='#arrival'>section suivante</a>."
+          },
+          {
+            "q": "Y aura-t-il un parking sur place?",
+            "a": "Oui, un parking est disponible directement au Domaine de Mauvinet. Vous pourrez laisser votre voiture pour la nuit si besoin."
+          },
+          {
+            "q": "Quelles sont les prévisions météo?",
+            "a": "Mars peut être encore frais en Mayenne. Prévoyez une petite laine !"
+          },
+          {
+            "q": "Le mariage est-il en intérieur ou en extérieur?",
+            "a": "La cérémonie et le dîner/soirée se dérouleront en intérieur."
+          },
+          {
+            "q": "Y a-t-il un dress code?",
+            "a": "Pas de dress code imposé ! Venez habillés comme vous le souhaitez. Les couleurs du mariage seront pastel, mais ce n’est en aucun cas une obligation."
+          },
+          {
+            "q": "Les enfants sont-ils les bienvenus?",
+            "a": "Oui, les enfants mentionnés sur l’invitation sont les bienvenus avec grand plaisir."
+          },
+          {
+            "q": "Quel traiteur s’occupe du repas?",
+            "a": "Le repas sera préparé par Maison Marsollier, une belle expérience culinaire en perspective. Merci de nous signaler toute allergie ou régime particulier lors de votre réponse."
+          },
+          {
+            "q": "Peut-on dormir sur place?",
+            "a": "Oui, 42 couchages sont disponibles au Domaine de Mauvinet. Merci de nous contacter si vous souhaitez en bénéficier."
+          },
+          {
+            "q": "Y a-t-il d’autres hébergements à proximité?",
+            "a": "Liste de Gîte–Maison autour du Domaine du Mauvinet <a href='https://www.gites-de-france-mayenne.com/fr/recherche/locations-vacances-gites-mayenne?category=gite&city=Vaiges&lat=48.041582&lng=-0.480618&radius=25&per_page=15'>ici</a>."
+          },
+          {
+            "q": "Y aura-t-il un brunch le lendemain?",
+            "a": "Oui, un petit brunch est prévu le dimanche matin pour ceux qui dorment sur place ou dans les environs. Détails à venir!"
+          },
+          {
+            "q": "Avez-vous une liste de mariage?",
+            "a": "Aucun cadeau n’est attendu. Mais si vous souhaitez nous faire plaisir, vous pouvez contribuer à notre voyage de noces à Hawaï via une cagnotte en ligne ou sur place le jour du mariage."
+          }
+        ],
         footerText: "© 2025-2026 Carole et Sebastian. Tous droits réservés."
       },
       es: {
@@ -221,7 +395,65 @@
         ceremony: "cita para la<br><span class=\"italic\">Ceremonia de unión</span><br>– a&nbsp;las&nbsp;16&nbsp;horas –",
         cocktail: "luego el<br><span class=\"italic\">Cóctel</span><br>– a&nbsp;las&nbsp;17&nbsp;horas –",
         dinner: "Compartiremos luego una cena que continuará con<br>música en la pista de baile.",
-        moreInfo: "Mas información en breve!",
+
+        faqTitle: "Probablemente te estés preguntando…",
+        faq: [
+          {
+            "q": "¿Cuándo es el casamiento y dónde se celebra?",
+            "a": "El sábado 14 de marzo de 2026 en el Domaine de Mauvinet, en Ruillé-Froid-Fonds (Mayenne). La ceremonia laica comenzará a las 16:00. Gracias por llegar a partir de las 15:30."
+          },
+          {
+            "q": "¿Cómo llegar a Domaine de Mauvinet?",
+            "a": "Listamos algunas opciones de transporte en la <a href='#arrival'>próxima sección</a>."
+          },
+          {
+            "q": "¿Habrá estacionamiento en el lugar?",
+            "a": "Sí, hay estacionamiento disponible directamente en el Domaine de Mauvinet. Puedes dejar tu coche durante la noche si es necesario."
+          },
+          {
+            "q": "¿Cómo va a estar clima en esa época?",
+            "a": "En marzo generalmente está fresco en Mayenne. Trae algo de abrigo por las dudas!"
+          },
+          {
+            "q": "¿La boda será en el interior o al exterior?",
+            "a": "La ceremonia y la cena/fiesta se realizarán en interiores."
+          },
+          {
+            "q": "¿Hay un código de vestimenta?",
+            "a": "¡No hay código de vestimenta obligatorio! Vístete como prefieras. Los colores de la boda serán en tonos pastel, pero no es obligatorio."
+          },
+          {
+            "q": "¿Los niños son bienvenidos?",
+            "a": "Sí, los niños son más que bienvenidos! Por favor confirma su asistencia al responder la invitación."
+          },
+          {
+            "q": "¿Qué servicio de catering se encarga de la comida?",
+            "a": "La comida será preparada por Maison Marsollier, una gran experiencia culinaria francesa. Por favor indícanos cualquier alergia o necesidad alimentaria especial al responder."
+          },
+          {
+            "q": "¿Se puede dormir en el lugar?",
+            "a": "Sí, hay 42 camas disponibles en el Domaine de Mauvinet. Contáctanos si deseas quedarte a dormir."
+          },
+          {
+            "q": "¿Hay otros alojamientos cerca?",
+            "a": "<a href='https://www.gites-de-france-mayenne.com/fr/recherche/locations-vacances-gites-mayenne?category=gite&city=Vaiges&lat=48.041582&lng=-0.480618&radius=25&per_page=15'>Acá</a> podes encontrar una lista de alojamientos alrededor del lugar."
+          },
+          {
+            "q": "¿Habrá brunch al día siguiente?",
+            "a": "Sí, habrá un pequeño brunch el domingo por la mañana para quienes duerman en el lugar o cerca. Más detalles en breve!"
+          },
+          {
+            "q": "¿Tienen lista de regalos?",
+            "a": "Que nos acompañen en este día es regalo suficiente! Pero si quieres hacernos un detalle, puedes contribuir a nuestra luna de miel en Hawaii a través de una transferencia bancaria o en persona el día de la boda. Más detalles en breve!"
+          }
+        ],
+        arrivalTitle: "¿Cómo llegar?",
+        arrival1Title: "Opción 1: Desde París",
+        arrival1Desc: "Tomá un tren TGV desde Paris Montparnasse hasta Laval (aprox. 1hs 10min). Desde la estación de Laval son unos 25 minutos en taxi hasta el lugar.",
+        arrival2Title: "Opción 2: Desde Rennes",
+        arrival2Desc: "Podés tomar un tren regional TER hasta Laval (aprox. 1hs 30min) o alquilar un auto. En auto, el viaje desde Rennes toma unas 1hs.",
+        arrival3Title: "Opción 3: Desde Nantes",
+        arrival3Desc: "Podés manejar directamente (unas 2hs) o tomar un tren a Laval vía Angers o Le Mans.",
         footerText: "© 2025-2026 Carole y Sebastian. Todos los derechos reservados."
       }
     };
@@ -241,8 +473,19 @@
     /* ─────────── Inject text into page ─────────── */
     const updateContent = t => {
       for (const key in t) {
+        if (key === 'faq') continue; // skip faq array
         const el = document.getElementById(key);
         if (el) el.innerHTML = t[key];
+      }
+      // Render FAQ dynamically
+      const faqList = document.getElementById('faqList');
+      if (faqList && Array.isArray(t.faq)) {
+        faqList.innerHTML = t.faq.map(f =>
+          `<div>
+            <h3>${f.q}</h3>
+            <p>${f.a}</p>
+          </div>`
+        ).join('');
       }
     };
 
