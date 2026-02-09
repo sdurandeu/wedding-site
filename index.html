@@ -211,6 +211,36 @@
       font-size: clamp(0.9rem, 2.3vw, 1.05rem);
     }
 
+    #bank-accounts {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      max-width: 800px;
+    }
+
+    #bank-accounts h2 {
+      font-weight: 500;
+      font-size: clamp(1.2rem, 3.3vw, 1.7rem);
+      letter-spacing: 0.12em;
+      margin-bottom: 2rem;
+    }
+
+    .bank-option {
+      display: grid;
+      grid-template-columns: 1fr 2.5fr;
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+
+    .bank-title {
+      font-weight: 500;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin-bottom: 2rem;
+    }
+
+    .bank-desc {
+      font-size: clamp(0.9rem, 2.3vw, 1.05rem);
+    }
+
     #faq {
       margin-top: 4rem;
       margin-bottom: 4rem;
@@ -338,6 +368,19 @@
     </div>
   </section>
 
+  <!-- Bank Accounts -->
+  <section id="bank-accounts">
+    <h2 id="bankAccountsTitle" style="text-align: center;"></h2>
+    <div class="bank-option">
+      <div id="bank1Title" class="bank-title"></div>
+      <div id="bank1Desc" class="bank-desc"></div>
+    </div>
+    <div class="bank-option">
+      <div id="bank2Title" class="bank-title"></div>
+      <div id="bank2Desc" class="bank-desc"></div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <img class="photo-of-us" src="photo-of-us-art.png" alt="Photos de Carole et Sebastian"  />
 
@@ -386,29 +429,17 @@
             "q": "Y a-t-il un dress code?",
             "a": "Pas de dress code imposé! Venez habillés comme vous le souhaitez. Les couleurs du mariage seront pastel, mais ce n’est en aucun cas une obligation."
           },
-          // {
-          //   "q": "Les enfants sont-ils les bienvenus?",
-          //   "a": "Oui, les enfants mentionnés sur l’invitation sont les bienvenus avec grand plaisir."
-          // },
           {
             "q": "Quel traiteur s’occupe du repas?",
             "a": "Le repas sera préparé par Maison Marsollier, une belle expérience culinaire en perspective. Merci de nous signaler toute allergie ou régime particulier lors de votre réponse."
           },
-          // {
-          //   "q": "Peut-on dormir sur place?",
-          //   "a": "Oui, 42 couchages sont disponibles au Domaine de Mauvinet. Merci de nous contacter si vous souhaitez en bénéficier."
-          // },
           {
             "q": "Quels hébergements y a-t-il à proximité ?",
             "a": "<a target='_blank' href='https://www.gites-de-france-mayenne.com/fr/recherche/locations-vacances-gites-mayenne?category=gite&city=Ruill%C3%A9-Froid-Fonds&lat=47.90566399999999&lng=-0.6533034&radius=25&per_page=15'>Ici</a> vous pouvez trouver une liste d’hébergements autour du lieu. Sinon, <a href='https://maps.app.goo.gl/HoiF7PvJJaBQbyhk6'>ici</a> Google Maps affiche également ces options."
           },
           {
-            "q": "Y aura-t-il un brunch le lendemain?",
-            "a": "Oui, un petit brunch est prévu le dimanche matin pour ceux qui dorment dans les environs. Détails à venir!"
-          },
-          {
             "q": "Avez-vous une liste de mariage?",
-            "a": "Aucun cadeau n’est attendu. Mais si vous souhaitez nous faire plaisir, vous pouvez contribuer à notre voyage de noces à Hawaï via une cagnotte en ligne ou sur place le jour du mariage."
+            "a": "Aucun cadeau n’est attendu. Mais si vous souhaitez nous faire plaisir, vous pouvez contribuer à notre voyage de noces à Hawaï via une cagnotte en ligne (détails ci-dessous) ou sur place le jour du mariage."
           }
         ],
 
@@ -424,7 +455,13 @@
         arrival5Title: "Depuis Rennes",
         arrival5Desc: "Vous pouvez prendre un train jusqu’à Laval (env. 40min) ou louer une voiture. En voiture, le trajet depuis Rennes prend environ 1h 30min.",
         arrival6Title: "Depuis Nantes",
-        arrival6Desc: "Vous pouvez conduire directement (environ 2h) ou prendre un train TER jusqu’à Laval (1h 30min).",
+        arrival6Desc: "Vous pouvez conduire directement (environ 2h) ou prendre un train TER jusqu'à Laval (1h 30min).",
+
+        bankAccountsTitle: "Coordonnées bancaires",
+        bank1Title: "Compte EUR",
+        bank1Desc: "<b>Titulaire:</b> Carole Jouet<br><b>IBAN:</b> FR76 1790 6000 9000 0566 6532 601<br><b>BIC:</b> AGRIFRPP879 <br><b>Banque:</b> Crédit Agricole",
+        bank2Title: "Compte GBP",
+        bank2Desc: "<b>Titulaire:</b> Sebastian Durandeu<br><b>Sort Code:</b> 04-00-04<br><b>Account Number:</b> 97959572 <br><b>Banque:</b> Monzo Bank",
 
         footerText: "© 2025-2026 Carole et Sebastian. Tous droits réservés."
       },
@@ -465,29 +502,17 @@
             "q": "¿Hay un código de vestimenta?",
             "a": "¡No hay código de vestimenta obligatorio! Vístete como prefieras. Los colores de la boda serán en tonos pastel, pero no es obligatorio."
           },
-          // {
-          //   "q": "¿Los niños son bienvenidos?",
-          //   "a": "Sí, los niños son más que bienvenidos! Por favor confirma su asistencia al responder la invitación."
-          // },
           {
             "q": "¿Qué servicio de catering se va a encargar de la comida?",
             "a": "La comida será preparada por Maison Marsollier, una gran experiencia culinaria francesa. Por favor indícanos cualquier alergia o necesidad alimentaria especial al responder."
           },
-          // {
-          //   "q": "¿Se puede dormir en el lugar?",
-          //   "a": "Sí, hay 42 camas disponibles en el Domaine de Mauvinet. Contáctanos si deseas quedarte a dormir."
-          // },
           {
             "q": "¿Qué alojamientos cerca hay?",
-            "a": "<a target='_blank' href='https://www.gites-de-france-mayenne.com/fr/recherche/locations-vacances-gites-mayenne?category=gite&city=Ruill%C3%A9-Froid-Fonds&lat=47.90566399999999&lng=-0.6533034&radius=25&per_page=15'>Aquí</a> podés encontrar una lista de alojamientos alrededor del lugar. Sino también <a href='https://maps.app.goo.gl/HoiF7PvJJaBQbyhk6'>Aquí</a> Google Maps muestra estas opciones."
-          },
-          {
-            "q": "¿Hay brunch al día siguiente?",
-            "a": "Sí, habrá un pequeño brunch el domingo por la mañana para quienes duerman cerca. Más detalles en breve!"
+            "a": "<a target='_blank' href='https://www.gites-de-france-mayenne.com/fr/recherche/locations-vacances-gites-mayenne?category=gite&city=Ruill%C3%A9-Froid-Fonds&lat=47.90566399999999&lng=-0.6533034&radius=25&per_page=15'>Aquí</a> podés encontrar una lista de alojamientos alrededor del lugar. Sino también <a href='https://maps.app.goo.gl/HoiF7PvJJaBQbyhk6'>aquí</a> Google Maps muestra estas opciones."
           },
           {
             "q": "¿Van a hacer lista de regalos?",
-            "a": "Que nos acompañen en este día es regalo suficiente! Pero si quieres hacernos un detalle, puedes contribuir a nuestra luna de miel en Hawaii a través de una transferencia bancaria o en persona el día de la boda. Más detalles en breve!"
+            "a": "Que nos acompañen en este día es regalo suficiente! Pero si quieres hacernos un detalle, puedes contribuir a nuestra luna de miel en Hawaii a través de una transferencia bancaria (detalles abajo) o en persona el día de la boda."
           }
         ],
 
@@ -504,6 +529,12 @@
         arrival5Desc: "Podés tomar un tren hasta Laval (aprox. 40min) o alquilar un auto. En auto, el viaje desde Rennes toma 1h 30min.",
         arrival6Title: "Desde Nantes",
         arrival6Desc: "Podés manejar directamente (unas 2hs) o tomar un tren TER a Laval (1h 30min).",
+
+        bankAccountsTitle: "Datos bancarios",
+        bank1Title: "Cuenta EUR",
+        bank1Desc: "<b>Titular:</b> Carole Jouet<br><b>IBAN:</b> FR76 1790 6000 9000 0566 6532 601<br><b>BIC:</b> AGRIFRPP879 <br><b>Banco:</b> Crédit Agricole",
+        bank2Title: "Cuenta GBP",
+        bank2Desc: "<b>Titular:</b> Sebastian Durandeu<br><b>Sort Code:</b> 04-00-04<br><b>Account Number:</b> 97959572 <br><b>Banco:</b> Monzo Bank",
 
         footerText: "© 2025-2026 Carole y Sebastian. Todos los derechos reservados."
       }
