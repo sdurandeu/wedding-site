@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Programa — Carole & Sebastian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #fffdf4;
+      --text: #333;
+      --serif: 'Cormorant Garamond', serif;
+      --letterspace: 0.18em;
+      --line-color: rgba(51, 51, 51, 0.25);
+      --dot-size: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 3rem 1.5rem 4rem;
+      color: var(--text);
+      font-family: var(--serif);
+    }
+
+    a {
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    header h1 {
+      font-weight: 500;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      letter-spacing: var(--letterspace);
+      text-transform: uppercase;
+      margin: 0 0 0.4rem;
+    }
+
+    header p {
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin: 0;
+      opacity: 0.75;
+    }
+
+    /* ── Timeline wrapper ── */
+    .timeline {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      padding-left: 2.5rem;
+    }
+
+    /* vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--line-color);
+    }
+
+    /* ── Day block ── */
+    .day {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    /* dot on the line */
+    .day::before {
+      content: '';
+      position: absolute;
+      left: calc(-2.5rem - var(--dot-size) / 2 + 0.5px);
+      top: 0.55rem;
+      width: var(--dot-size);
+      height: var(--dot-size);
+      border-radius: 50%;
+      background: var(--text);
+      opacity: 0.35;
+    }
+
+    .day-label {
+      font-weight: 600;
+      font-size: clamp(1rem, 2.8vw, 1.2rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    /* ── Events inside a day ── */
+    .events {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr;
+      gap: 0.6rem;
+      font-size: clamp(0.9rem, 2.3vw, 1.05rem);
+      line-height: 1.55;
+    }
+
+    .event-time {
+      font-weight: 500;
+      opacity: 0.6;
+      white-space: nowrap;
+      padding-top: 0.05em;
+    }
+
+    .event-desc {
+    }
+
+    .event-desc a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    footer img {
+      height: 45px;
+    }
+
+    @media (max-width: 480px) {
+      .timeline {
+        padding-left: 1.8rem;
+      }
+
+      .day::before {
+        left: calc(-1.8rem - var(--dot-size) / 2 + 0.5px);
+      }
+
+      .event {
+        grid-template-columns: 4.5rem 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Programa del fin de semana</h1>
+    <p>Carole &amp; Sebastian — 14 de Marzo 2026</p>
+  </header>
+
+  <div class="timeline">
+
+    <!-- Friday -->
+    <div class="day">
+      <div class="day-label">Viernes 13 de marzo</div>
+      <div class="events">
+        <div class="event">
+          <div class="event-time">Todo el día</div>
+          <div class="event-desc">
+            Ocupar las habitaciones y dejar las valijas. No hay horario de check-in, pueden llegar cuando quieran.
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">20:00 hs</div>
+          <div class="event-desc">
+            Cena solo con amigos argentinos en
+            <a href="https://maps.app.goo.gl/Yz1whFyUywZ9sG1i6" target="_blank">La Cantine, Chateau-Gontier</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saturday -->
+    <div class="day">
+      <div class="day-label">Sábado 14 de marzo</div>
+      <div class="events">
+        <div class="event">
+          <div class="event-time">Mañana</div>
+          <div class="event-desc">
+            Mañana y mediodía libres. Recordar decirle feliz cumpleaños a Carole que cumple el mismo dia.
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">15:30 hs</div>
+          <div class="event-desc">
+            Llegar a Domaine de Mauvinet. Puntualidad por favor.
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">16:00 hs</div>
+          <div class="event-desc">
+            Empieza la ceremonia. Santiago, Chacho, Hernan y Pablo leen en este orden.
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">Después</div>
+          <div class="event-desc">
+            Cóctel, cena y fiesta. La noche cierra bailando cuarteto.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sunday -->
+    <div class="day">
+      <div class="day-label">Domingo 15 de marzo</div>
+      <div class="events">
+        <div class="event">
+          <div class="event-time">10:30 hs</div>
+          <div class="event-desc">
+            Brunch para los que duermen en el salón (~40 personas) y algunos amigos cercanos.
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">13:30 hs</div>
+          <div class="event-desc">
+            Fin del brunch.
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-time">15:30 hs</div>
+          <div class="event-desc">
+            Hora limite para dejar las habitaciones.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <img src="footer.png" alt="Logo Carole et Sebastian" />
+  </footer>
+
+</body>
+</html>
